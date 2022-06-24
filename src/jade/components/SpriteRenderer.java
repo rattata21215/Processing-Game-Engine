@@ -36,22 +36,22 @@ public class SpriteRenderer extends Component {
                     transform.getPosition().x,
                     transform.getPosition().y
             );
-            if (repeatX) {
-                while (tempPos.x < 1280) {
+            if(repeatX) {
+                while(tempPos.x < 1280) {
                     sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.x += transform.getScale().x;
                 }
-                while (tempPos.x > -1280) {
+                while(tempPos.x > -1280) {
                     sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.x -= transform.getScale().x;
                 }
             }
-            if (repeatY) {
-                while (tempPos.y < 720) {
+            if(repeatY) {
+                while(tempPos.y < 720) {
                     sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.y += transform.getScale().y;
                 }
-                while (tempPos.x > -1280) {
+                while(tempPos.x > -1280) {
                     sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.y -= transform.getScale().y;
                 }
