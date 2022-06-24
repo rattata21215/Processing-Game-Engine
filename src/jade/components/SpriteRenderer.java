@@ -11,16 +11,14 @@ public class SpriteRenderer extends Component {
     private PImage sprite;
     private boolean repeatX;
     private boolean repeatY;
-    private boolean background;
 
     private Transform transform = null;
 
-    public SpriteRenderer(GameObject gameObject, PImage sprite, boolean repeatX, boolean repeatY, boolean background) {
+    public SpriteRenderer(GameObject gameObject, PImage sprite, boolean repeatX, boolean repeatY) {
         super(gameObject);
         this.sprite = sprite;
         this.repeatX = repeatX;
         this.repeatY = repeatY;
-        this.background = background;
     }
 
     @Override
@@ -38,29 +36,29 @@ public class SpriteRenderer extends Component {
                     transform.getPosition().x,
                     transform.getPosition().y
             );
-            if(repeatX) {
-                while(tempPos.x < 1280) {
-                    sketch.image(sprite, tempPos.x, tempPos.y);
+            if (repeatX) {
+                while (tempPos.x < 1280) {
+                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.x += transform.getScale().x;
                 }
-                while(tempPos.x > -1280) {
-                    sketch.image(sprite, tempPos.x, tempPos.y);
+                while (tempPos.x > -1280) {
+                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.x -= transform.getScale().x;
                 }
             }
-            if(repeatY) {
-                while(tempPos.y < 720) {
-                    sketch.image(sprite, tempPos.x, tempPos.y);
+            if (repeatY) {
+                while (tempPos.y < 720) {
+                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.y += transform.getScale().y;
                 }
-                while(tempPos.x > -1280) {
-                    sketch.image(sprite, tempPos.x, tempPos.y);
+                while (tempPos.x > -1280) {
+                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
                     tempPos.y -= transform.getScale().y;
                 }
             }
         } else {
-            this.transform = this.gameObject.getComponent(Transform.class);
-            sketch.image(sprite, 0, 0);
+            gameObject.addComponent(new Transform(gameObject));
+            this.transform = gameObject.getComponent(Transform.class);
         }
     }
 }
