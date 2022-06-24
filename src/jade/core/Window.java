@@ -14,6 +14,8 @@ public class Window extends PApplet {
     public static void changeToScene(String sceneName) {
         if(currentScene == null)
             currentScene = new MainMenuScene();
+
+        currentScene.start();
     }
 
     private static PApplet sketch;
@@ -34,7 +36,7 @@ public class Window extends PApplet {
         frameRate(120);
         background(0);
 
-        changeToScene("MainMenuScenes");
+        changeToScene("MainMenuScene");
     }
 
     public void draw() {

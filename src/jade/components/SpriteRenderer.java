@@ -22,43 +22,46 @@ public class SpriteRenderer extends Component {
     }
 
     @Override
+    public void init() {
+        this.transform = gameObject.getComponent(Transform.class);
+    }
+
+    @Override
     public void update(final float dt) {
         Vector2f tempPos;
         if(this.sprite == null)
             return;
 
-        if(this.transform != null) {
-            transform.getScale().x = sketch.width;
-            transform.getScale().y = sketch.height;
-
-            tempPos = new Vector2f(transform.getPosition().x, transform.getPosition().y);
-            sketch.image(sprite,
-                    transform.getPosition().x,
-                    transform.getPosition().y
-            );
-            if(repeatX) {
-                while(tempPos.x < 1280) {
-                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
-                    tempPos.x += transform.getScale().x;
-                }
-                while(tempPos.x > -1280) {
-                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
-                    tempPos.x -= transform.getScale().x;
-                }
-            }
-            if(repeatY) {
-                while(tempPos.y < 720) {
-                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
-                    tempPos.y += transform.getScale().y;
-                }
-                while(tempPos.x > -1280) {
-                    sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
-                    tempPos.y -= transform.getScale().y;
-                }
-            }
-        } else {
-            gameObject.addComponent(new Transform(gameObject));
+        if(this.transform == null)
             this.transform = gameObject.getComponent(Transform.class);
+
+        tempPos = new Vector2f(transform.getPosition().x, transform.getPosition().y);
+        sketch.image(sprite,
+                transform.getPosition().x,
+                transform.getPosition().y,
+
+                transform.getScale().x,
+                transform.getScale().y
+        );
+        if(repeatX) {
+            while(tempPos.x < 1280) {
+                sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
+                tempPos.x += transform.getScale().x;
+            }
+            while(tempPos.x > -1280) {
+                sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
+                tempPos.x -= transform.getScale().x;
+            }
+        }
+        if(repeatY) {
+            while(tempPos.y < 720) {
+                sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
+                tempPos.y += transform.getScale().y;
+            }
+            while(tempPos.x > -1280) {
+                sketch.image(sprite, tempPos.x, tempPos.y, transform.getScale().x, transform.getScale().y);
+                tempPos.y -= transform.getScale().y;
+            }
         }
     }
 }
