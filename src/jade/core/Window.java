@@ -44,5 +44,15 @@ public class Window extends PApplet {
 
         textSize(25);
         text("FPS: " + frameRate, 15, 25);
+
+        Input.update();
+    }
+
+    public void keyPressed() {
+        Input.current[keyCode] = true;
+    }
+
+    public void keyReleased() {
+        Input.current[keyCode] = false;
     }
 }
