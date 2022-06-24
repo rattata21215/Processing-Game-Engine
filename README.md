@@ -1,5 +1,5 @@
 # Processing-Game-Engine
-A simple 2D game engine in Java using the Processing library(?), with a level editor, level saving, and a component system similar to Unity.
+A simple 2D game engine I'm currently working on in Java using the Processing library(?), which will have a level editor, level saving, and a component system similar to Unity.
 
 # How to make a project with Processing (IntelliJ):
 ![Open the Project Structure menu](readme/intellij/proj-structure.png)
