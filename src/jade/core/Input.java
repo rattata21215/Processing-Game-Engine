@@ -6,9 +6,7 @@ public class Input {
 
     public static void update() {
         previous = new boolean[256];
-        for(int i = 0; i < 256; i++) {
-            previous[i] = current[i];
-        }
+        System.arraycopy(current, 0, previous, 0, 256);
     }
 
     public static boolean IsKeyDown(int key) {
