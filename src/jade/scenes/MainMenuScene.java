@@ -4,8 +4,6 @@ import jade.components.SpriteRenderer;
 import jade.components.Transform;
 import jade.core.*;
 
-import java.awt.event.KeyEvent;
-
 public class MainMenuScene extends Scene {
     public MainMenuScene() {
         super("MainMenuScene");
@@ -23,20 +21,17 @@ public class MainMenuScene extends Scene {
         ));
 
         for(Component c : test.getAllComponents()) {
-            c.init();
+            c.start();
         }
     }
 
     @Override
     public void update(final float dt) {
         super.update(dt);
+
+        test.getComponent(Transform.class).getPosition().x -= 50f * dt;
+
         test.update(dt);
         test.updateComponents(dt);
-        if(Input.IsKeyHeld(KeyEvent.VK_W))
-            System.out.println("Input Test #1");
-        if(Input.IsKeyDown(KeyEvent.VK_S))
-            System.out.println("Input Test #2");
-        if(Input.IsKeyUp(KeyEvent.VK_D))
-            System.out.println("Input Test #3");
     }
 }

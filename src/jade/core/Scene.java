@@ -11,7 +11,14 @@ public abstract class Scene {
         this.gameObjects = new ArrayList<>();
     }
 
-    public abstract void start();
+    public void start() {
+        for(GameObject gameObject : gameObjects) {
+            gameObject.start();
+            for(Component component : gameObject.getAllComponents()) {
+                component.start();
+            }
+        }
+    }
     public void update(final float dt) {
         for(GameObject go : gameObjects) {
             go.update(dt);

@@ -22,7 +22,7 @@ public class SpriteRenderer extends Component {
     }
 
     @Override
-    public void init() {
+    public void start() {
         this.transform = gameObject.getComponent(Transform.class);
     }
 

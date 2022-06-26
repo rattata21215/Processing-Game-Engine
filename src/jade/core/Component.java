@@ -17,6 +17,6 @@ public abstract class Component {
         COMPONENT_ID++;
     }
 
-    public void init() {}
+    public void start() {}
     public void update(final float dt) {}
 }
